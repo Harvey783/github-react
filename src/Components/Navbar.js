@@ -4,7 +4,10 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar background-primary">
-        <h3>NavBar</h3>
+        <h3>
+          <i className="fab fa-github"></i>
+          NavBar
+        </h3>
       </nav>
     );
   }
