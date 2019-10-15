@@ -6,7 +6,7 @@ class Navbar extends Component {
       <nav className="navbar background-primary">
         <h3>
           <i className="fab fa-github"></i>
-          NavBar
+          Github React
         </h3>
       </nav>
     );
