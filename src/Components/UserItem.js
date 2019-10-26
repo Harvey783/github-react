@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class UserItem extends Component {
-  render() {
-    const { login, avatar_url, html_url } = this.props.user;
-    return (
-      <div className="card text-center">
-        <img
-          src={avatar_url}
-          alt=""
-          style={{ width: '70px', borderRadius: '75%' }}
-        />
-        <h4>
-          <a href={html_url}>{login}</a>
-        </h4>
-      </div>
-    );
-  }
-}
+const UserItem = props => {
+  const { login, avatar_url, html_url } = props.user;
+
+  return (
+    <div className="card text-center">
+      <img
+        src={avatar_url}
+        alt=""
+        style={{ width: '70px', borderRadius: '75%' }}
+      />
+      <h4>
+        <a href={html_url}>{login}</a>
+      </h4>
+    </div>
+  );
+};
 
 export default UserItem;
