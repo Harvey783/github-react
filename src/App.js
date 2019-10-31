@@ -5,10 +5,9 @@ import axios from 'axios';
 import './App.css';
 
 class App extends Component {
-  componentDidMount() {
-    axios
-      .get('https://api.github.com/users')
-      .then(response => console.log(response.data));
+  async componentDidMount() {
+    const response = await axios.get('https://api.github.com/users');
+    console.log(response.data);
   }
 
   render() {
