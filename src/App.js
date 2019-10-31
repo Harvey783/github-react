@@ -10,7 +10,10 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const response = await axios.get('https://api.github.com/users');
+    console.log(process.env.CLIENT_SECRET);
+    const response = await axios.get(
+      'https://api.github.com/users?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}'
+    );
     this.setState({ users: response.data });
   }
 
@@ -19,7 +22,7 @@ class App extends Component {
       <div>
         <Navbar />
         <div className="container">
-          <Users />
+          <Users users={this.state.users} />
         </div>
       </div>
     );
