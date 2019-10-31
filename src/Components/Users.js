@@ -3,9 +3,9 @@ import UserItem from './UserItem';
 
 const Users = ({ users }) => {
   return (
-    <div style={userStyle} className="">
+    <div style={userStyle}>
       {users.map(user => (
-        <UserItem key={user.id} className="" user={user} />
+        <UserItem key={user.id} user={user} />
       ))}
     </div>
   );
