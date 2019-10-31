@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserItem from './UserItem';
 
-class Users extends Component {
-  render() {
-    return (
-      <div style={userStyle} className="">
-        {this.props.users.map(user => (
-          <UserItem key={user.id} className="" user={user} />
-        ))}
-      </div>
-    );
-  }
-}
+const Users = ({ users }) => {
+  return (
+    <div style={userStyle} className="">
+      {users.map(user => (
+        <UserItem key={user.id} className="" user={user} />
+      ))}
+    </div>
+  );
+};
 
 const userStyle = {
   display: 'grid',
