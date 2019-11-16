@@ -17,12 +17,16 @@ class App extends Component {
     this.setState({ users: response.data });
   }
 
+  searchUsers = text => {
+    console.log(text);
+  };
+
   render() {
     return (
       <div>
         <Navbar />
         <div className="container">
-          <Search />
+          <Search searchUsers={this.searchUsers} />
           <Users users={this.state.users} />
         </div>
       </div>
