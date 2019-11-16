@@ -29,9 +29,11 @@ class Search extends React.Component {
           />
           <input type="submit" value="Search" />
         </form>
-        <button className="" onClick={this.props.clearUsers}>
-          Clear
-        </button>
+        {this.props.showClear && (
+          <button className="" onClick={this.props.clearUsers}>
+            Clear
+          </button>
+        )}
       </div>
     );
   }
