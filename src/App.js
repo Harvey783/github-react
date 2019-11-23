@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Components/Navbar';
 import Users from './Components/Users';
 import Search from './Components/Search';
+import Alert from './Components/Alert';
 import axios from 'axios';
 import './App.css';
 
@@ -38,6 +39,7 @@ class App extends Component {
       <div>
         <Navbar />
         <div className="container">
+          <Alert alert={this.state.alert} />
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
