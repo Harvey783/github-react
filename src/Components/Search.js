@@ -10,10 +10,14 @@ class Search extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    // Pass to App.js
-    this.props.searchUsers(this.state.text);
-    // Clear search
-    this.setState({ text: '' });
+    if (this.state.text === '') {
+      this.props.setAlert('Please enter a user');
+    } else {
+      // Pass to App.js
+      this.props.searchUsers(this.state.text);
+      // Clear search
+      this.setState({ text: '' });
+    }
   };
 
   render() {
