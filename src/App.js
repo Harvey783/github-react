@@ -7,7 +7,8 @@ import './App.css';
 
 class App extends Component {
   state = {
-    users: []
+    users: [],
+    alert: null
   };
 
   async componentDidMount() {
@@ -28,6 +29,10 @@ class App extends Component {
     this.setState({ users: [] });
   };
 
+  setAlert = message => {
+    this.setState({ alert: { message } });
+  };
+
   render() {
     return (
       <div>
@@ -37,6 +42,7 @@ class App extends Component {
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
             showClear={this.state.users.length > 0 ? true : false}
+            setAlert={this.setAlert}
           />
           <Users users={this.state.users} />
         </div>
