@@ -1,46 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class Search extends React.Component {
-  state = {
-    text: ''
-  };
+const Search = props => {
+  const [text, setText] = useState('');
 
-  onChange = event =>
-    this.setState({ [event.target.name]: event.target.value });
+  const onChange = event => setText(event.target.value);
 
-  onSubmit = event => {
+  const onSubmit = event => {
     event.preventDefault();
-    if (this.state.text === '') {
-      this.props.setAlert('Please enter a user');
+    if (text === '') {
+      props.setAlert('Please enter a user');
     } else {
-      // Pass to App.js
-      this.props.searchUsers(this.state.text);
-      // Clear search
-      this.setState({ text: '' });
+      props.searchUsers(text);
+
+      setText('');
     }
   };
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.onSubmit} className="">
-          <input
-            type="text"
-            name="text"
-            placeholder="Search for Users"
-            value={this.state.text}
-            onChange={this.onChange}
-          />
-          <input type="submit" value="Search" />
-        </form>
-        {this.props.showClear && (
-          <button className="" onClick={this.props.clearUsers}>
-            Clear
-          </button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <form onSubmit={onSubmit} className="">
+        <input
+          type="text"
+          name="text"
+          placeholder="Search for Users"
+          value={text}
+          onChange={onChange}
+        />
+        <input type="submit" value="Search" />
+      </form>
+      {props.showClear && (
+        <button className="" onClick={props.clearUsers}>
+          Clear
+        </button>
+      )}
+    </div>
+  );
+};
 
 export default Search;
