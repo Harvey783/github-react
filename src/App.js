@@ -11,6 +11,7 @@ import './App.css';
 class App extends Component {
   state = {
     users: [],
+    user: {},
     alert: null
   };
 
@@ -26,6 +27,13 @@ class App extends Component {
       `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`
     );
     this.setState({ users: response.data.items });
+  };
+
+  searchUser = async username => {
+    const response = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`
+    );
+    this.setState({ user: response.data });
   };
 
   clearUsers = () => {
