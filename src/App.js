@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Users from './Components/Users';
 import Search from './Components/Search';
@@ -37,19 +38,21 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar />
-        <div className="container">
-          <Alert alert={this.state.alert} />
-          <Search
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers}
-            showClear={this.state.users.length > 0 ? true : false}
-            setAlert={this.setAlert}
-          />
-          <Users users={this.state.users} />
+      <Router>
+        <div>
+          <Navbar />
+          <div className="container">
+            <Alert alert={this.state.alert} />
+            <Search
+              searchUsers={this.searchUsers}
+              clearUsers={this.clearUsers}
+              showClear={this.state.users.length > 0 ? true : false}
+              setAlert={this.setAlert}
+            />
+            <Users users={this.state.users} />
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
