@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Users from './Components/Users';
+import User from './Components/User';
 import Search from './Components/Search';
 import Alert from './Components/Alert';
 import About from './Components/About';
@@ -29,7 +30,7 @@ class App extends Component {
     this.setState({ users: response.data.items });
   };
 
-  searchUser = async username => {
+  getUser = async username => {
     const response = await axios.get(
       `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`
     );
@@ -69,6 +70,13 @@ class App extends Component {
                 )}
               />
               <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/user/:login"
+                render={props => (
+                  <User {...props} getUser={this.getUser} user={user} />
+                )}
+              />
             </Switch>
           </div>
         </div>
